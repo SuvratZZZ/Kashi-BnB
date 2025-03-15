@@ -1,11 +1,16 @@
 import { useState } from 'react' 
 import './App.css'
+import Navbar from './Component/Navbar'
+import Slider from './Component/Slider'
+import Homestay from './Component/Pages/Homestay'
 
 function App() { 
 
   return (
-    <> 
-    <h1 className='text-'>Kashi</h1>
+    <>  
+    <Navbar/>
+    <Slider/>
+    <Homestay/>
     </>
   )
 }
