@@ -60,6 +60,7 @@ const Homestay = () => {
               "Free Breakfast",
               "Ocean View",
             ]}
+            
           />
           <Card
             name="5 Bedroom Villa - Prime Location"
