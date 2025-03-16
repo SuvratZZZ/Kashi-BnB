@@ -13,6 +13,11 @@ export const loginControl = async (req,res,nex)=>{
                 email: req.body.email
             }
         })
+        if(!user||(user.verified==false)){
+            return res.status(411).json({
+                message : "email not verified"
+            });
+        }
         if(bcrypt.compare(req.body.password,user.password)){
             const token = await jwt.sign(user,process.env.JWT_SEX);
             return res.status(200).json({
@@ -22,7 +27,7 @@ export const loginControl = async (req,res,nex)=>{
         }
         else{
             return res.status(411).json({
-                message : "wrong password"
+                message : "wrong username or password"
             });
         }
     }

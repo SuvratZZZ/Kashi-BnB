@@ -2,13 +2,15 @@ import jwt from 'jsonwebtoken';
 
 const authorisation = async (req,res,nex)=>{
     try{
-        const token = req.header.get('authorisation').split(" ")[1];
+        const token = req.get('Authorization').split(" ")[1];
         if(!token){
             return res.status(411).json({
                 message : "no token",
             });
         }
-        if(await jwt.verify(token,process.env.JWT_SEX)){
+        const user=await jwt.verify(token,process.env.JWT_SEX);
+        req.body.user=user;
+        if(user){
             nex();
         }
         else{
@@ -18,20 +20,48 @@ const authorisation = async (req,res,nex)=>{
         }
     }
     catch(e){
+        console.log(e);
         return res.status(411).json({
             message : "auth error",
             e
         });
     }
 };
-const isAdmin = async (req,res,nex)=>{
-    
-};
-const hasHotel = async (req,res,nex)=>{
 
+const isAdmin = async (req,res,nex)=>{
+    const user= req.body.user;
+    console.log(user);
+    if(user.isAdmin==true){
+        nex();
+    }
+    else{
+        return res.status(411).json({
+            message:" not admin"
+        });
+    }
+};
+
+const hasHotel = async (req,res,nex)=>{
+    const user= req.body.user;
+    if(user.hasHotel==true){
+        nex();
+    }
+    else{
+        return res.status(411).json({
+            message:" no hotel"
+        });
+    }
 };
 const hasRestr = async (req,res,nex)=>{
-
+    const user= req.body.user;
+    if(user.hasRestr==true){
+        nex();
+    }
+    else{
+        return res.status(411).json({
+            message:" no rester"
+        });
+    }
 };
 
 export {isAdmin,authorisation,hasHotel,hasRestr};
