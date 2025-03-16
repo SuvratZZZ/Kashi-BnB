@@ -1,9 +1,14 @@
 import {Router} from "express";
 import { loginControl, signupControl, checkControl, verification } from "../controllers/user.js";
 import { authorisation, hasHotel, isAdmin } from "../middleware/auth.js";
+import adminRouter from '../routes/admin.js';
 
 const router = Router();
 
+// admin
+router.use('/admin',adminRouter);
+
+// user
 router.post('/login',loginControl);
 router.post('/signup',signupControl);
 router.get('/signup/verify/',verification);
