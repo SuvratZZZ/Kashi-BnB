@@ -15,6 +15,9 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/v1/user',userRouter);
+app.get('/',(req,res)=>{
+    return res.send("Apis for Kashi-BnB");
+});
 // app.use('/api/v1/restr');
 // app.use('/api/v1/hotel');
 
