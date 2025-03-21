@@ -72,3 +72,10 @@ model rimages {
   rest    restr  @relation(fields: [restrId], references: [id])
   restrId String
 }
+
+model requests {
+  id        String @id @default(uuid())
+  email     String
+  message   String
+  phone     String
+}

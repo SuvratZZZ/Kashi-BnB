@@ -1,10 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '../utils/client.js';
 import cryptoRandomString from 'crypto-random-string';
 import { sendEmail } from '../utils/mail.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const prisma = new PrismaClient();
 
 export const loginControl = async (req,res,nex)=>{
     try{
@@ -147,4 +146,23 @@ export const checkControl = (req,res,nex)=>{
     return res.json({
         message:"route working"
     });
+}
+
+export const makeRequest = async (req,res,nex)=>{
+    try{
+        await prisma.requests.create({
+            data : {
+                ...req.body
+            }
+        })
+        return res.status(200).json({
+            message : "request created"
+        })
+    }
+    catch(e){
+        return res.status(420).json({
+            message : "error req created",
+            e
+        })
+    }
 }
