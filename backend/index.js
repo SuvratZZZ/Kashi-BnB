@@ -20,7 +20,7 @@ app.get('/',(req,res)=>{
 });
 // app.use('/api/v1/restr');
 // app.use('/api/v1/hotel');
-
+// https://kashi-bnb-production.up.railway.app/
 
 app.listen(3000,()=>{
     console.log("app running on");
