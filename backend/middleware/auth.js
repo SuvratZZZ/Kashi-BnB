@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import rateLimit from 'express-rate-limit';
 
 const authorisation = async (req,res,nex)=>{
     try{
@@ -64,4 +65,10 @@ const hasRestr = async (req,res,nex)=>{
     }
 };
 
-export {isAdmin,authorisation,hasHotel,hasRestr};
+const limiter = rateLimit({
+    windowMs: 60 * 1000,
+    max: 10,
+    message: "Too many requests, please try again later."
+});
+
+export {isAdmin,authorisation,hasHotel,hasRestr,limiter};

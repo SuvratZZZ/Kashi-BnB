@@ -1,5 +1,6 @@
 import express from 'express';
-
+import { limiter } from './middleware/auth.js';
+import userRouter from './routes/user.js';
 // const app = express();
 
 // app.use(cors());
@@ -9,9 +10,10 @@ import express from 'express';
 // })
 
 // app.listen(3000);
-import userRouter from './routes/user.js';
 
 const app = express();
+
+app.use(limiter);
 app.use(express.json());
 
 app.use('/api/v1/user',userRouter);
