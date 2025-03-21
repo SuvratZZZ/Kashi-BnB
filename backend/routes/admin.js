@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { checkControl } from "../controllers/user.js";
 import { authorisation, isAdmin } from "../middleware/auth.js";
-import { makeAdmin, makeHoteler, makeRestr } from "../controllers/admin.js";
+import { makeAdmin, makeHoteler, makeRestr ,viewRequest } from "../controllers/admin.js";
 
 const router = Router();
 
