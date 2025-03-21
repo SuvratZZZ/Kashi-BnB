@@ -32,4 +32,4 @@ dotenv.config();
 
     return;
   };
-    sendEmail("singhsubrat35@gmail.com","gogogo");
+    // sendEmail("singhsubrat35@gmail.com","gogogo");
