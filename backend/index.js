@@ -4,7 +4,7 @@ import userRouter from './routes/user.js';
 
 const app = express();
 
-app.use(limiter);
+// app.use(limiter);
 app.use(express.json());
 app.use('/api/v1/user',userRouter);
 
