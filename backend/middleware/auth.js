@@ -34,7 +34,7 @@ const isAdmin = async (req,res,nex)=>{
     {    
         const user= req.body.user;
         console.log(user);
-        if(user.is_Admin==true){
+        if(user.is_admin==true){
             nex();
         }
         else{
@@ -57,7 +57,7 @@ const hasHotel = async (req,res,nex)=>{
     try
     {    
         const user= req.body.user;
-        if(user.has_Hotel==true){
+        if(user.has_hotel==true){
             nex();
         }
         else{
@@ -79,7 +79,7 @@ const hasRestr = async (req,res,nex)=>{
     try
     {    
         const user= req.body.user;
-        if(user.has_Restr==true){
+        if(user.has_restr==true){
             nex();
         }
         else{
