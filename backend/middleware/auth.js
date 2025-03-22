@@ -30,38 +30,71 @@ const authorisation = async (req,res,nex)=>{
 };
 
 const isAdmin = async (req,res,nex)=>{
-    const user= req.body.user;
-    console.log(user);
-    if(user.isAdmin==true){
-        nex();
+    try
+    {    
+        const user= req.body.user;
+        console.log(user);
+        if(user.is_Admin==true){
+            nex();
+        }
+        else{
+            return res.status(411).json({
+                message:" not admin"
+            });
+        }
     }
-    else{
+    catch(e){
+        console.log(e);
         return res.status(411).json({
-            message:" not admin"
+            message:" error geting data",
+            e
         });
+    
     }
 };
 
 const hasHotel = async (req,res,nex)=>{
-    const user= req.body.user;
-    if(user.hasHotel==true){
-        nex();
+    try
+    {    
+        const user= req.body.user;
+        if(user.has_Hotel==true){
+            nex();
+        }
+        else{
+            return res.status(411).json({
+                message:" no hoteler"
+            });
+        }
     }
-    else{
+    catch(e){
+        console.log(e);
         return res.status(411).json({
-            message:" no hotel"
+            message:" error geting data",
+            e
         });
+
     }
 };
 const hasRestr = async (req,res,nex)=>{
-    const user= req.body.user;
-    if(user.hasRestr==true){
-        nex();
+    try
+    {    
+        const user= req.body.user;
+        if(user.has_Restr==true){
+            nex();
+        }
+        else{
+            return res.status(411).json({
+                message:" no rester"
+            });
+        }
     }
-    else{
+    catch(e){
+        console.log(e);
         return res.status(411).json({
-            message:" no rester"
+            message:" error geting data",
+            e
         });
+    
     }
 };
 
