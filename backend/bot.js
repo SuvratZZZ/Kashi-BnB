@@ -41,7 +41,18 @@ import { prisma } from './utils/client.js'
 //     }
 // });
 
-let hotel = await prisma.hotels.findMany();
+let hotel = await prisma.hotels.update({
+    where : {
+        id : "35bf912c-956e-48bb-90a6-7ad745bc6282",
+    },
+    data : {
+            rate : 100,
+            s1 : 'wifi',
+            s2 : 'wifi',
+            s3 : 'wifi',
+            s4 : 'wifi',
+    }
+});
 
 // let hotel = await prisma.hotels.findMany({
 //     where : {

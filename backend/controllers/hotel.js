@@ -4,7 +4,12 @@ export const getHotels = async (req,res,nex)=>{
     try{
         const hotels = await prisma.hotels.findMany({
             include: {
-                owner: true,
+                owner: {
+                    select : {
+                        name : true,
+                        email : true,
+                    }
+                },
                 images: {
                     take: 1,
                 }
@@ -31,6 +36,15 @@ export const getUniqueHotel = async (req,res,nex)=>{
         const hotel = await prisma.hotels.findUnique({
             where : {
                 id
+            },
+            include : {
+                owner : {
+                    select : {
+                        name : true,
+                        email : true
+                    },
+                },
+                images : true
             }
         });
         return res.status(200).json({
