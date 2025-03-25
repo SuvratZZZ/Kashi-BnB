@@ -4,7 +4,7 @@ export const getHotels = async (req,res,nex)=>{
     try{
         const hotels = await prisma.hotels.findMany();
         return res.status(200).json({
-            ...hotels
+            hotels
         })
     }
     catch(e){

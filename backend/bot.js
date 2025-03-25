@@ -41,15 +41,14 @@ import { prisma } from './utils/client.js'
 //     }
 // });
 
-let hotel = await prisma.hotels.findMany({
-    where : {
-        name : 'viswakarma'
-    },
-    select : {
-        // images,
-        owner
-    }
-});
+let hotel = await prisma.hotels.findMany();
+
+// let hotel = await prisma.hotels.findMany({
+//     where : {
+//         name : 'viswakarma'
+//     },
+//     // select : "owner"
+// });
 
 // console.log(me);
 console.log(hotel);
