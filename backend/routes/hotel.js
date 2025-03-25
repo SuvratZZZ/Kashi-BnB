@@ -1,4 +1,3 @@
-import { prisma } from "../utils/client";
 import { Router } from "express";
 import { getHotels,getUniqueHotel } from '../controllers/hotel.js';
 
