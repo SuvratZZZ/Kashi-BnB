@@ -2,10 +2,15 @@ import { prisma } from "../utils/client.js";
 
 export const getHotels = async (req,res,nex)=>{
     try{
-        const hotels = await prisma.hotels.findMany();
-        return res.status(200).json({
-            hotels
-        })
+        const hotels = await prisma.hotels.findMany({
+            include: {
+                owner: true,
+                images: {
+                    take: 1,
+                }
+            }
+        });
+        return res.status(200).json({ hotels });
     }
     catch(e){
         console.log(e);
