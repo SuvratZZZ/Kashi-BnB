@@ -6,7 +6,7 @@ import adminRouter from '../routes/admin.js';
 const router = Router();
 
 // admin
-router.use('/admin',isAdmin,adminRouter);
+router.use('/admin',authorisation,isAdmin,adminRouter);
 
 // user
 router.post('/login',loginControl);
