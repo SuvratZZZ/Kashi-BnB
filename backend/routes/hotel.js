@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getHotels,getUniqueHotel } from '../controllers/hotel.js';
-import { authorisation } from '../middleware/auth.js'
+import { getHotels,getUniqueHotel,bookHotel,getMyHotels } from '../controllers/hotel.js';
+import { authorisation,hasHotel } from '../middleware/auth.js'
 
 const router = Router();
 
