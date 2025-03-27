@@ -11,8 +11,8 @@ const authorisation = async (req,res,nex)=>{
             });
         }
         const user=await jwt.verify(token,process.env.JWT_SEX);
-        req.body.user=user;
         if(user){
+            req.user=user;
             nex();
         }
         else{
@@ -35,7 +35,7 @@ const authorisation = async (req,res,nex)=>{
 const isAdmin = async (req,res,nex)=>{
     try
     {    
-        const user= req.body.user;
+        const user= req.user;
         console.log(user);
         if(user.is_admin==true){
             nex();
@@ -61,7 +61,7 @@ const isAdmin = async (req,res,nex)=>{
 const hasHotel = async (req,res,nex)=>{
     try
     {    
-        const user= req.body.user;
+        const user= req.user;
         if(user.has_hotel==true){
             nex();
         }
@@ -85,7 +85,7 @@ const hasHotel = async (req,res,nex)=>{
 const hasRestr = async (req,res,nex)=>{
     try
     {    
-        const user= req.body.user;
+        const user= req.user;
         if(user.has_restr==true){
             nex();
         }

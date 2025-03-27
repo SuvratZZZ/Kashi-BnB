@@ -80,6 +80,8 @@ export const bookHotel = async (req,res,nex) => {
         const booking = await prisma.bookings.create({
             data : {
                 ...req.body,
+                hotelId : id,
+                userId : req.user.id,
             }
         })
         return res.status(200).json({
@@ -102,7 +104,7 @@ export const getMyHotels = async (req,res,nex) =>{
     try{
         const hotels = await prisma.hotels.findMany({
             where : {
-                email : req.body.user.email,
+                email : req.user.email,
             },
             include : {
                 bookings : true,
