@@ -41,26 +41,37 @@ import { prisma } from './utils/client.js'
 //     }
 // });
 
-let hotel = await prisma.hotels.update({
-    where : {
-        id : "35bf912c-956e-48bb-90a6-7ad745bc6282",
-    },
-    data : {
-            rate : 100,
-            s1 : 'wifi',
-            s2 : 'wifi',
-            s3 : 'wifi',
-            s4 : 'wifi',
-    }
-});
-
-// let hotel = await prisma.hotels.findMany({
+// let hotel = await prisma.hotels.update({
 //     where : {
-//         name : 'viswakarma'
+//         id : "35bf912c-956e-48bb-90a6-7ad745bc6282",
 //     },
-//     // select : "owner"
+//     data : {
+//             rate : 100,
+//             s1 : 'wifi',
+//             s2 : 'wifi',
+//             s3 : 'wifi',
+//             s4 : 'wifi',
+//     }
 // });
 
-// console.log(me);
-console.log(hotel);
-// console.log(img);
+// // let hotel = await prisma.hotels.findMany({
+// //     where : {
+// //         name : 'viswakarma'
+// //     },
+// //     // select : "owner"
+// // });
+
+// // console.log(me);
+// console.log(hotel);
+// // console.log(img);
+
+
+// let da = new Date();
+
+
+// da.setDate(9);
+// da.setMonth(2);
+// da.setFullYear(2002);
+
+// // da.setHours(0,0,0,0);
+// console.log(da);

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { getHotels,getUniqueHotel } from '../controllers/hotel.js';
+import { authorisation } from '../middleware/auth.js'
 
 const router = Router();
 
@@ -10,14 +11,14 @@ router.get('/hotel/:uid',getUniqueHotel);
 router.get('/hotels',getHotels);
 
 // user-authorised
-// router.post('/upgrade_request',authorisation,makeRequest);
+router.post('/hotel/:uid/book',authorisation,bookHotel);
 // router.get('/signup/verify/',verification);
 // router.get('/check',checkControl);
 // router.get('/auth-check',authorisation,isAdmin,checkControl);
 // router.get('/admin-check',authorisation,isAdmin,checkControl);
-// router.get('/hotel-check',authorisation,hasHotel,checkControl);
 
 // hoteler-authorised
+router.get('/my-hotels',authorisation,hasHotel,getMyHotels);
 
 
 // admin-authorised

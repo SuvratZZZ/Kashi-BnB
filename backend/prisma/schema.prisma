@@ -91,13 +91,14 @@ model requests {
 }
 
 model bookings {
-  id        String @id @default(uuid())
+  id        String    @id @default(uuid())
   email     String
   message   String
   phone     String
-  time      DateTime @updatedAt
-
-  hotel     hotels @relation(fields: [hotelId], references: [id])
+  time      DateTime  @updatedAt
+  from      DateTime
+  to        DateTime
+  hotel     hotels    @relation(fields: [hotelId], references: [id])
   hotelId   String
   user      users     @relation(fields: [userId], references: [id])
   userId    String
