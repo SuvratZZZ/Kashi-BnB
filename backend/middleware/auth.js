@@ -6,6 +6,7 @@ const authorisation = async (req,res,nex)=>{
         const token = req.get('Authorization').split(" ")[1];
         if(!token){
             return res.status(411).json({
+                success : false,
                 message : "no token",
             });
         }
@@ -16,6 +17,7 @@ const authorisation = async (req,res,nex)=>{
         }
         else{
             return res.status(411).json({
+                success : false,
                 message : "invalid token",
             });
         }
@@ -23,6 +25,7 @@ const authorisation = async (req,res,nex)=>{
     catch(e){
         console.log(e);
         return res.status(411).json({
+            success : false,
             message : "auth error",
             e
         });
@@ -39,6 +42,7 @@ const isAdmin = async (req,res,nex)=>{
         }
         else{
             return res.status(411).json({
+                success : false,
                 message:" not admin"
             });
         }
@@ -46,6 +50,7 @@ const isAdmin = async (req,res,nex)=>{
     catch(e){
         console.log(e);
         return res.status(411).json({
+            success : false,
             message:" error geting data",
             e
         });
@@ -62,6 +67,7 @@ const hasHotel = async (req,res,nex)=>{
         }
         else{
             return res.status(411).json({
+                success : false,
                 message:" no hoteler"
             });
         }
@@ -69,6 +75,7 @@ const hasHotel = async (req,res,nex)=>{
     catch(e){
         console.log(e);
         return res.status(411).json({
+            success : false,
             message:" error geting data",
             e
         });
@@ -84,6 +91,7 @@ const hasRestr = async (req,res,nex)=>{
         }
         else{
             return res.status(411).json({
+                success : false,
                 message:" no rester"
             });
         }
@@ -91,7 +99,8 @@ const hasRestr = async (req,res,nex)=>{
     catch(e){
         console.log(e);
         return res.status(411).json({
-            message:" error geting data",
+            success : false,
+            message:"error geting data",
             e
         });
     

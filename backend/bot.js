@@ -16,13 +16,14 @@
 // }
 
 import { prisma } from './utils/client.js'
+import bcrypt from 'bcrypt';
 
 
-// const me = await prisma.users.findUnique({
-//     where: {
-//         email : "subrat.singh.cer21@itbhu.ac.in"
-//     }
-// })
+const me = await prisma.users.findUnique({
+    where: {
+        email : "subrat.singh.cer21@itbhu.ac.in"
+    }
+})
 
 // const hotel = await prisma.hotels.create({
 //     data:{
@@ -53,16 +54,19 @@ import { prisma } from './utils/client.js'
 //             s4 : 'wifi',
 //     }
 // });
-
-// // let hotel = await prisma.hotels.findMany({
-// //     where : {
-// //         name : 'viswakarma'
-// //     },
-// //     // select : "owner"
-// // });
+// let newp = await bcrypt.hash(me.password,10);
+let hotel = await prisma.users.update({
+    where : {
+        email : me.email,
+    },
+    data : {
+        has_hotel : true,
+    }
+    // select : "owner"
+});
 
 // // console.log(me);
-// console.log(hotel);
+console.log(hotel);
 // // console.log(img);
 
 
