@@ -152,14 +152,14 @@ export const addNewHotel = async (req,res,nex) =>{
 }
 
 export const updateHotel = async (req,res,nex) =>{
-    console.log(req.body)
+    // console.log("this is body: " ,req.body)
     try{
         const id = req.params.uid;
         const newHotel = await prisma.hotels.update({
             where : {
                 id : id,
             },
-            update : {
+            data : {
                 ...req.body,
             }
         })
