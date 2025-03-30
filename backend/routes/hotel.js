@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getHotels,getUniqueHotel,bookHotel,getMyHotels } from '../controllers/hotel.js';
+import { getHotels,getUniqueHotel,bookHotel,getMyHotels, updateHotel, addNewHotel } from '../controllers/hotel.js';
 import { authorisation,hasHotel } from '../middleware/auth.js'
 
 const router = Router();
@@ -19,7 +19,8 @@ router.post('/hotel/:uid/book',authorisation,bookHotel);
 
 // hoteler-authorised
 router.get('/my-hotels',authorisation,hasHotel,getMyHotels);
-
+router.post('/create-hotel',authorisation,hasHotel,addNewHotel);
+router.post('/hotel/:uid/update-hotel',authorisation,hasHotel,updateHotel);
 
 // admin-authorised
 

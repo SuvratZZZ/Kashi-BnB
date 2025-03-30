@@ -37,6 +37,9 @@ model hotels {
   name      String
   address   String
   gmap      String
+  totalRoom Int       @default(2)
+  maxInRoom Int       @default(2)
+  details   String    @default("This is beutiful hotel")
   rate      Decimal   @default(0.0) // Provide a default value
   s1        String    @default("")
   s2        String    @default("")

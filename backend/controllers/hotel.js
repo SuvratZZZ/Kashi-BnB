@@ -43,13 +43,15 @@ export const getUniqueHotel = async (req,res,nex)=>{
                 id
             },
             include : {
-                owner : {
-                    select : {
-                        name : true,
-                        email : true
-                    },
-                },
-                images : true
+                owner : true,
+                // {
+                //     select : {
+                //         name : true,
+                //         email : true
+                //     },
+                // },
+                images : true,
+                bookings : true,
             }
         });
         return res.status(200).json({
@@ -114,6 +116,56 @@ export const getMyHotels = async (req,res,nex) =>{
             success : true,
             message : "your hotels",
             hotels
+        });
+    }
+    catch(e){
+        console.log(e);
+        return res.status(420).json({
+            success : false,
+            message : "error getting your hotels",e
+        });
+    }
+}
+
+
+export const addNewHotel = async (req,res,nex) =>{
+    try{
+        const newHotel = await prisma.hotels.create({
+            data : {
+                ...req.body,
+                userId : req.user.id,
+            }
+        })
+        return res.status(200).json({
+            success : true,
+            message : "created hotel",
+            newHotel
+        });
+    }
+    catch(e){
+        console.log(e);
+        return res.status(420).json({
+            success : false,
+            message : "error getting your hotels",e
+        });
+    }
+}
+
+export const updateHotel = async (req,res,nex) =>{
+    try{
+        const id = req.params.uid;
+        const newHotel = await prisma.hotels.update({
+            where : {
+                id : id,
+            },
+            update : {
+                ...req.body,
+            }
+        })
+        return res.status(200).json({
+            success : true,
+            message : "updated hotel",
+            newHotel
         });
     }
     catch(e){
