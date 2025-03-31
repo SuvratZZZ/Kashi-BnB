@@ -147,7 +147,7 @@ export const signupControl = async (req,res,nex)=>{
     catch(e){
         return res.status(411).json({
             success : false ,
-            message:"unable to gen token",
+            message:"unable to signup",
             e
         });
     }
@@ -179,3 +179,4 @@ export const makeRequest = async (req,res,nex)=>{
         })
     }
 }
+

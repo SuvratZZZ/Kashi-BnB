@@ -84,6 +84,7 @@ const hasHotel = async (req,res,nex)=>{
 
     }
 };
+
 const hasRestr = async (req,res,nex)=>{
     try
     {    
