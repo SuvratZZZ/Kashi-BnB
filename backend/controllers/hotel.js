@@ -160,6 +160,18 @@ export const updateHotel = async (req,res,nex) =>{
             },
             data : {
                 ...req.body,
+            },
+            include : {
+                owner : 
+                // true,
+                {
+                    select : {
+                        name : true,
+                        email : true
+                    },
+                },
+                images : true,
+                bookings : true,
             }
         })
         return res.status(200).json({
