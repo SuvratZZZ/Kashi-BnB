@@ -106,7 +106,7 @@ export const getMyHotels = async (req,res,nex) =>{
     try{
         const hotels = await prisma.hotels.findMany({
             where : {
-                userId : req.user.id,
+                ownerId : req.user.id,
             },
             include : {
                 bookings : true,
@@ -132,7 +132,7 @@ export const addNewHotel = async (req,res,nex) =>{
         const newHotel = await prisma.hotels.create({
             data : {
                 ...req.body,
-                userId : req.user.id,
+                ownerId : req.user.id,
             }
         })
 
