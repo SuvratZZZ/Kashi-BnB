@@ -106,7 +106,7 @@ export const getMyHotels = async (req,res,nex) =>{
     try{
         const hotels = await prisma.hotels.findMany({
             where : {
-                email : req.user.email,
+                userId : req.user.id,
             },
             include : {
                 bookings : true,
