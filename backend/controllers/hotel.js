@@ -135,11 +135,16 @@ export const addNewHotel = async (req,res,nex) =>{
                 userId : req.user.id,
             }
         })
-        return res.status(200).json({
-            success : true,
-            message : "created hotel",
-            newHotel
-        });
+
+        if(req.files.length===0){
+            return res.status(200).json({
+                success : true,
+                message : "created hotel",
+                newHotel
+            });
+        }
+        req.params.uid = newHotel.id;
+        return nex();
     }
     catch(e){
         console.log(e);
