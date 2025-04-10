@@ -20,10 +20,13 @@ export const loginControl = async (req,res,nex)=>{
         }
         if(await bcrypt.compare(req.body.password,user.password)){
             const token = await jwt.sign(user,process.env.JWT_SEX);
+            user.token=null;
+            user.password=null;
             return res.status(200).json({
                 success : true,
                 message : "logged in",
                 token : `Bearer ${token}`,
+                user
             });
         }
         else{
