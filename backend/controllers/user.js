@@ -76,12 +76,16 @@ export const verification = async (req,res,nex)=>{
                     verified : true
                 }
             });
+
+            return res.send(`
+                <p>Email verified! <a href="${process.env.FRONT}/login">Login to continue</a></p>
+            `);
             
             return res.status(200).json({
                 success : true,
                 message : "verified",
                 user 
-            });
+            }).html(`<p> verified email : <a href="${process.env.FRONT}/login">login to continue</a> </p>`);
         }
         else{
             return res.status(411).json({
