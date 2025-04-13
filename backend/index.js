@@ -6,11 +6,7 @@ import cors from 'cors'
 
 const app = express();
 
-app.use(cors({
-    origin: ['http://69.62.84.19:4000', 'https://varanasibnb-com-hqhc.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true
-  }));
+app.use(cors());
 // app.use(limiter);
 app.use(express.json());
 app.use('/api/v1/user',userRouter);
